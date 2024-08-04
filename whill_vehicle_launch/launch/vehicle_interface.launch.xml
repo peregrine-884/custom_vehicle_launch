@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
   <arg name="vehicle_id" default="$(env VEHICLE_ID default)"/>
+
+  <group>
+    <include file="$(find-pkg-share whill_bringup)/launch/whill_launch.py">
+      <arg>
+    </include>
+  </group>
 </launch>
+
+<!-- ========================================================================
+TODO: autowareの出力とwhillの入力を合わせる
+autowareの出力を車両に流して、車両を動かすlaunchファイル
+========================================================================= -->
