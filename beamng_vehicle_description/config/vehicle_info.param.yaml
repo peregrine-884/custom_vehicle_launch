@@ -1,14 +1,14 @@
 /**:
   ros__parameters:
-    wheel_radius: 0.383 # The radius of the wheel, primarily used for dead reckoning.
-    wheel_width: 0.235 # The lateral width of a wheel tire, primarily used for dead reckoning.
-    wheel_base: 2.79 # between front wheel center and rear wheel center
-    wheel_tread: 1.64 # between left wheel center and right wheel center
-    front_overhang: 1.0 # between front wheel center and vehicle front
-    rear_overhang: 1.1 # between rear wheel center and vehicle rear
-    left_overhang: 0.128 # between left wheel center and vehicle left
-    right_overhang: 0.128 # between right wheel center and vehicle right
-    vehicle_height: 2.5
+    wheel_radius: 0.35 # The radius of the wheel, primarily used for dead reckoning.
+    wheel_width: 0.2 # The lateral width of a wheel tire, primarily used for dead reckoning.
+    wheel_base: 2.75 # between front wheel center and rear wheel center
+    wheel_tread: 1.7 # between left wheel center and right wheel center
+    front_overhang: 0.65 # between front wheel center and vehicle front
+    rear_overhang: 0.9 # between rear wheel center and vehicle rear
+    left_overhang: 0.35 # between left wheel center and vehicle left
+    right_overhang: 0.35 # between right wheel center and vehicle right
+    vehicle_height: 1.5
     max_steer_angle: 0.70 # [rad]
 
 # ************************************************************************************
@@ -21,6 +21,6 @@
 # left_overhang: 左タイヤと車体の一番左に位置する物体との距離
 # righ_overhang: 右タイヤと車体の一番右に位置する物体との距離
 # vehicle_height: 車両の高さ
-# max_steer_angle: 最大ステアリング角度 メカナムホイールの場合はよくわからない
+# max_steer_angle: 最大ステアリング角度
 # https://autowarefoundation.github.io/autoware-documentation/main/design/autoware-interfaces/components/vehicle-dimensions/
 # ************************************************************************************
