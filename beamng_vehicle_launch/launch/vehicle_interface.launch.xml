@@ -3,5 +3,13 @@
   <arg name="vehicle_id" default="$(env VEHICLE_ID default)"/>
 
   <group>
+    <!-- <node name="control_cmd_node" pkg="control_subscriber" exec="control_cmd_node" output="screen">
+    </node> -->
+  
+    <node name="imu_orientation" pkg="control_subscriber" exec="imu_orientation" output="screen">
+        <param name="yaw_degrees" value="0.0"/>
+        <param name="pitch_degrees" value="0.0"/>
+        <param name="roll_degrees" value="0.0"/>
+    </node>
   </group>
 </launch>
