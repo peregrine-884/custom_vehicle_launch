@@ -1,4 +1,4 @@
-#include "whill_controller/whill_control.hpp"
+#include "whill_controller/whill_controller.hpp"
 
 WhillController::WhillController() : Node("whill_controller")
 {

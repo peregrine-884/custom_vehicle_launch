@@ -18,7 +18,7 @@ include_directories(
   include
 )
 
-add_executable(whill_controller src/whill_control.cpp)
+add_executable(whill_controller src/whill_controller.cpp)
 ament_target_dependencies(whill_controller 
   rclcpp
   sensor_msgs
