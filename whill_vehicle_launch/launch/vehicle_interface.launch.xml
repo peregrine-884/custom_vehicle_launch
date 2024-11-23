@@ -2,14 +2,26 @@
 <launch>
   <arg name="vehicle_id" default="$(env VEHICLE_ID default)"/>
 
+  <arg name="whill_driver_config" default="$(find-pkg-share whill_bringup)/config/params.yaml"/>
+  <arg name="whill_config" default="$(find-pkg-share common_whill_vehicle)/config/params.yaml"/>
+
   <group>
-    <include file="$(find-pkg-share whill_bringup)/launch/whill_launch.py">
-      <arg>
-    </include>
+    <!-- whill_driver ノード -->
+    <node package="whill_driver" executable="whill" name="whill" output="screen">
+      <param from="$(var whill_driver_config)"/>
+    </node>
+
+    <!-- joy ノード -->
+    <node package="joy" executable="joy_node" name="joy_node" output="screen"/>
+
+    <!-- whill_controller ノード -->
+    <node package="common_whill_vehicle" executable="whill_controller" name="whill_controller" output="screen">
+      <param from="$(var whill_config)"/>
+    </node>
+
+    <!-- whill_interface ノード -->
+    <node package="common_whill_vehicle" executable="whill_interface" name="whill_interface" output="screen">
+      <param from="$(var whill_config)"/>
+    </node>
   </group>
 </launch>
-
-<!-- ========================================================================
-TODO: autowareの出力とwhillの入力を合わせる
-autowareの出力を車両に流して、車両を動かすlaunchファイル
-========================================================================= -->

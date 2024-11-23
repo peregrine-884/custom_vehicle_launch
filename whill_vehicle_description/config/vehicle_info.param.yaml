@@ -1,28 +1,12 @@
 /**:
   ros__parameters:
-    wheel_radius: 0.383 # The radius of the wheel, primarily used for dead reckoning.
-    wheel_width: 0.235 # The lateral width of a wheel tire, primarily used for dead reckoning.
-    wheel_base: 2.79 # between front wheel center and rear wheel center
-    wheel_tread: 1.64 # between left wheel center and right wheel center
-    front_overhang: 1.0 # between front wheel center and vehicle front
-    rear_overhang: 1.1 # between rear wheel center and vehicle rear
-    left_overhang: 0.128 # between left wheel center and vehicle left
-    right_overhang: 0.128 # between right wheel center and vehicle right
-    vehicle_height: 2.5
-    max_steer_angle: 0.70 # [rad]
-
-# ************************************************************************************
-# いろいろなlaunchファイルで読み込まれているので大事
-# TODO: 値を設定する
-# whell_radius: タイヤの半径
-# wheel_width: タイヤの横幅
-# wheel_base: 前輪と後輪の距離
-# wheel_tread: 左と右のタイヤの距離 track_widthと同じ
-# front_overhang: 前輪と車体の一番前に位置する物体との距離
-# rear_overhang: 後輪と車体の一番後ろに位置する物体との距離
-# left_overhang: 左タイヤと車体の一番左に位置する物体との距離
-# righ_overhang: 右タイヤと車体の一番右に位置する物体との距離
-# vehicle_height: 車両の高さ
-# max_steer_angle: 最大ステアリング角度 メカナムホイールの場合はよくわからない
-# https://autowarefoundation.github.io/autoware-documentation/main/design/autoware-interfaces/components/vehicle-dimensions/
-# ************************************************************************************
+    wheel_radius: 0.14 # The radius of the wheel, primarily used for dead reckoning.
+    wheel_width: 0.05 # The lateral width of a wheel tire, primarily used for dead reckoning.
+    wheel_base: 0.6 # between front wheel center and rear wheel center
+    wheel_tread: 0.5 # between left wheel center and right wheel center
+    front_overhang: 0.15 # between front wheel center and vehicle front
+    rear_overhang: 0.25 # between rear wheel center and vehicle rear
+    left_overhang: 0.05 # between left wheel center and vehicle left
+    right_overhang: 0.05 # between right wheel center and vehicle right
+    vehicle_height: 1.45
+    max_steer_angle: 0.70 # [rad] 40degree

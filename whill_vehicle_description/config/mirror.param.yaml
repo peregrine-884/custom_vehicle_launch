@@ -6,9 +6,3 @@
     max_lateral_offset: 0.0
     min_height_offset: 0.0
     max_height_offset: 0.0
-
-# ************************************************************************************
-# nebula_node_container.launch.pyで使用される
-# whillにミラーはないのですべて0に設定する
-# https://autowarefoundation.github.io/autoware-documentation/main/how-to-guides/integrating-autoware/creating-vehicle-and-sensor-model/creating-vehicle-model/#mirrorparamyaml
-# ************************************************************************************

@@ -1,0 +1,24 @@
+whill_interface:
+  ros__parameters:
+    wheel_tread: 0.5
+    motor_speed_factor: 0.30
+    min_velocity_threshold: 0.5
+    max_velocity_threshold: 2.0
+    min_steering_threshold: 0.01
+    max_steering_threshold: 0.5
+
+whill_controller:
+  ros__parameters:
+    min_speed: 0.0
+    max_speed: 0.3
+    min_angle: -0.5
+    max_angle: 0.5
+    normalizer: 2.0
+    manual_button: 3
+    speed_plus_button: 5
+    speed_minus_button: 4
+    speed_axes: 1
+    angle_axes: 0
+
+# speed[m/s], angle[rad]
+# max_angle * normalizer = 1.0になるように値を設定
