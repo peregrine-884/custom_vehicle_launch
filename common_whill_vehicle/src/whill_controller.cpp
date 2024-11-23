@@ -1,4 +1,4 @@
-#include "whill_controller/whill_controller.hpp"
+#include "common_whill_vehicle/whill_controller.hpp"
 
 WhillController::WhillController() : Node("whill_controller")
 {
@@ -29,28 +29,47 @@ WhillController::WhillController() : Node("whill_controller")
 
 void WhillController::get_parameters()
 {
-  this->get_parameter("min_speed", min_speed_);
-  this->get_parameter("max_speed", max_speed_);
-  this->get_parameter("min_angle", min_angle_);
-  this->get_parameter("max_angle", max_angle_);
-  this->get_parameter("normalizer", normalizer_);
-  this->get_parameter("manual_button", manual_button_);
-  this->get_parameter("speed_plus_button", speed_plus_button_);
-  this->get_parameter("speed_minus_button", speed_minus_button_);
-  this->get_parameter("speed_axes", speed_axes_);
-  this->get_parameter("angle_axes", angle_axes_);
+  this->declare_parameter("min_speed", 0.0);
+  min_speed_ = this->get_parameter("min_speed").as_double();
 
-  // RCLCPP_INFO(this->get_logger(), "Parameters:");
-  // RCLCPP_INFO(this->get_logger(), "min_speed: %f", min_speed_);
-  // RCLCPP_INFO(this->get_logger(), "max_speed: %f", max_speed_);
-  // RCLCPP_INFO(this->get_logger(), "min_angle: %f", min_angle_);
-  // RCLCPP_INFO(this->get_logger(), "max_angle: %f", max_angle_);
-  // RCLCPP_INFO(this->get_logger(), "normalizer: %f", normalizer_);
-  // RCLCPP_INFO(this->get_logger(), "manual_button: %d", manual_button_);
-  // RCLCPP_INFO(this->get_logger(), "speed_plus_button: %d", speed_plus_button_);
-  // RCLCPP_INFO(this->get_logger(), "speed_minus_button: %d", speed_minus_button_);
-  // RCLCPP_INFO(this->get_logger(), "speed_axes: %d", speed_axes_);
-  // RCLCPP_INFO(this->get_logger(), "angle_axes: %d", angle_axes_);
+  this->declare_parameter("max_speed", 0.0);
+  max_speed_ = this->get_parameter("max_speed").as_double();
+
+  this->declare_parameter("min_angle", 0.0);
+  min_angle_ = this->get_parameter("min_angle").as_double();
+
+  this->declare_parameter("max_angle", 0.0);
+  max_angle_ = this->get_parameter("max_angle").as_double();
+
+  this->declare_parameter("normalizer", 0.0);
+  normalizer_ = this->get_parameter("normalizer").as_double();
+
+  this->declare_parameter("manual_button", 0);
+  manual_button_ = this->get_parameter("manual_button").as_int();
+
+  this->declare_parameter("speed_plus_button", 0);
+  speed_plus_button_ = this->get_parameter("speed_plus_button").as_int();
+
+  this->declare_parameter("speed_minus_button", 0);
+  speed_minus_button_ = this->get_parameter("speed_minus_button").as_int();
+
+  this->declare_parameter("speed_axes", 0);
+  speed_axes_ = this->get_parameter("speed_axes").as_int();
+
+  this->declare_parameter("angle_axes", 0);
+  angle_axes_ = this->get_parameter("angle_axes").as_int();
+
+  RCLCPP_INFO(this->get_logger(), "Parameters:");
+  RCLCPP_INFO(this->get_logger(), "min_speed: %f", min_speed_);
+  RCLCPP_INFO(this->get_logger(), "max_speed: %f", max_speed_);
+  RCLCPP_INFO(this->get_logger(), "min_angle: %f", min_angle_);
+  RCLCPP_INFO(this->get_logger(), "max_angle: %f", max_angle_);
+  RCLCPP_INFO(this->get_logger(), "normalizer: %f", normalizer_);
+  RCLCPP_INFO(this->get_logger(), "manual_button: %d", manual_button_);
+  RCLCPP_INFO(this->get_logger(), "speed_plus_button: %d", speed_plus_button_);
+  RCLCPP_INFO(this->get_logger(), "speed_minus_button: %d", speed_minus_button_);
+  RCLCPP_INFO(this->get_logger(), "speed_axes: %d", speed_axes_);
+  RCLCPP_INFO(this->get_logger(), "angle_axes: %d", angle_axes_);
 }
 
 void WhillController::autoware_callback(const Control::SharedPtr msg)
