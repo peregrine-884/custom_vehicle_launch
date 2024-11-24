@@ -2,25 +2,25 @@
 <launch>
   <arg name="vehicle_id" default="$(env VEHICLE_ID default)"/>
 
-  <arg name="whill_driver_config" default="$(find-pkg-share whill_bringup)/config/params.yaml"/>
+  <arg name="whill_driver_config" default="$(find-pkg-share whill_bringup)/params.yaml"/>
   <arg name="whill_config" default="$(find-pkg-share common_whill_vehicle)/config/params.yaml"/>
 
   <group>
     <!-- whill_driver ノード -->
-    <node package="whill_driver" executable="whill" name="whill" output="screen">
+    <node pkg="whill_driver" exec="whill" output="screen">
       <param from="$(var whill_driver_config)"/>
     </node>
 
     <!-- joy ノード -->
-    <node package="joy" executable="joy_node" name="joy_node" output="screen"/>
+    <node pkg="joy" exec="joy_node" output="screen"/>
 
     <!-- whill_controller ノード -->
-    <node package="common_whill_vehicle" executable="whill_controller" name="whill_controller" output="screen">
+    <node pkg="common_whill_vehicle" exec="whill_controller" output="screen">
       <param from="$(var whill_config)"/>
     </node>
 
     <!-- whill_interface ノード -->
-    <node package="common_whill_vehicle" executable="whill_interface" name="whill_interface" output="screen">
+    <node pkg="common_whill_vehicle" exec="whill_interface" output="screen">
       <param from="$(var whill_config)"/>
     </node>
   </group>

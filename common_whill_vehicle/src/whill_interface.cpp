@@ -1,4 +1,4 @@
-#include "whill_interface/whill_interface.hpp"
+#include "common_whill_vehicle/whill_interface.hpp"
 #include <cmath>
 
 WhillInterface::WhillInterface() : Node("whill_interface")
@@ -17,12 +17,34 @@ WhillInterface::WhillInterface() : Node("whill_interface")
 }
 
 void WhillInterface::get_parameters() {
-  this->get_parameter("wheel_tread", wheel_tread_);
-  this->get_parameter("motor_speed_factor", motor_speed_factor_);
-  this->get_parameter("min_velocity_threshold", min_velocity_threshold_);
-  this->get_parameter("max_velocity_threshold", max_velocity_threshold_);
-  this->get_parameter("min_steering_threshold", min_steering_threshold_);
-  this->get_parameter("max_steering_threshold", max_steering_threshold_);
+  this->declare_parameter("wheel_base", 0.0);
+  wheel_base_ = this->get_parameter("wheel_base").as_double();
+
+this->declare_parameter("wheel_tread", 0.0);
+  wheel_tread_ = this->get_parameter("wheel_tread").as_double();
+
+  this->declare_parameter("motor_speed_factor", 0.0);
+  motor_speed_factor_ = this->get_parameter("motor_speed_factor").as_double();
+
+  this->declare_parameter("min_velocity_threshold", 0.0);
+  min_velocity_threshold_ = this->get_parameter("min_velocity_threshold").as_double();
+
+  this->declare_parameter("max_velocity_threshold", 0.0);
+  max_velocity_threshold_ = this->get_parameter("max_velocity_threshold").as_double();
+
+  this->declare_parameter("min_steering_threshold", 0.0);
+  min_steering_threshold_ = this->get_parameter("min_steering_threshold").as_double();
+
+  this->declare_parameter("max_steering_threshold", 0.0);
+  max_steering_threshold_ = this->get_parameter("max_steering_threshold").as_double();
+
+  RCLCPP_INFO(this->get_logger(), "wheel_base: %f", wheel_base_);
+  RCLCPP_INFO(this->get_logger(), "wheel_tread: %f", wheel_tread_);
+  RCLCPP_INFO(this->get_logger(), "motor_speed_factor: %f", motor_speed_factor_);
+  RCLCPP_INFO(this->get_logger(), "min_velocity_threshold: %f", min_velocity_threshold_);
+  RCLCPP_INFO(this->get_logger(), "max_velocity_threshold: %f", max_velocity_threshold_);
+  RCLCPP_INFO(this->get_logger(), "min_steering_threshold: %f", min_steering_threshold_);
+  RCLCPP_INFO(this->get_logger(), "max_steering_threshold: %f", max_steering_threshold_);
 }
 
 void WhillInterface::whill_callback(const whill_msgs::msg::ModelCr2State::SharedPtr msg) {
@@ -64,7 +86,7 @@ void WhillInterface::whill_callback(const whill_msgs::msg::ModelCr2State::Shared
         turning_radius = std::numeric_limits<double>::infinity();
     }
 
-    double steering_angle = std::atan(wheel_tread_ / turning_radius);
+    double steering_angle = std::asin(wheel_base_ / turning_radius);
 
     if (std::abs(steering_angle) > max_steering_threshold_) {
         steering_angle = std::copysign(max_steering_threshold_, steering_angle);

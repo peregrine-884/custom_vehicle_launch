@@ -1,8 +1,9 @@
 whill_interface:
   ros__parameters:
+    wheel_base: 0.6
     wheel_tread: 0.5
     motor_speed_factor: 0.30
-    min_velocity_threshold: 0.5
+    min_velocity_threshold: 0.1
     max_velocity_threshold: 2.0
     min_steering_threshold: 0.01
     max_steering_threshold: 0.5
@@ -10,7 +11,7 @@ whill_interface:
 whill_controller:
   ros__parameters:
     min_speed: 0.0
-    max_speed: 0.3
+    max_speed: 1.6666
     min_angle: -0.5
     max_angle: 0.5
     normalizer: 2.0

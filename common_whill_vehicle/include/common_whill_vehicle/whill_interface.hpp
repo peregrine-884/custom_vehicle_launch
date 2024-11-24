@@ -33,6 +33,7 @@ private:
     // Server
 
     // Param
+    double wheel_base_;
     double wheel_tread_;
     double motor_speed_factor_;
     double min_velocity_threshold_;
