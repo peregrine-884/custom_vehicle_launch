@@ -64,14 +64,6 @@ void WhillInterface::whill_callback(const whill_msgs::msg::ModelCr2State::Shared
 
     double longitudinal_velocity = (left_speed + right_speed) / 2;
 
-    if (std::abs(longitudinal_velocity) < min_velocity_threshold_) {
-        longitudinal_velocity = 0.0;
-    }
-
-    if (longitudinal_velocity > max_velocity_threshold_) {
-        longitudinal_velocity = max_velocity_threshold_;
-    }
-
     double heading_rate;
     if (right_speed == 0 && left_speed == 0) {
         heading_rate = 0.0;
@@ -86,7 +78,20 @@ void WhillInterface::whill_callback(const whill_msgs::msg::ModelCr2State::Shared
         turning_radius = std::numeric_limits<double>::infinity();
     }
 
-    double steering_angle = std::asin(wheel_base_ / turning_radius);
+    double asin_input = wheel_base_ / turning_radius;
+    if (std::abs(asin_input) > 1.0) {
+        asin_input = std::copysign(1.0, asin_input);
+    }
+    double steering_angle = std::asin(asin_input);
+
+    // validation
+    if (std::abs(longitudinal_velocity) < min_velocity_threshold_) {
+        longitudinal_velocity = 0.0;
+    }
+
+    if (longitudinal_velocity > max_velocity_threshold_) {
+        longitudinal_velocity = max_velocity_threshold_;
+    }
 
     if (std::abs(steering_angle) > max_steering_threshold_) {
         steering_angle = std::copysign(max_steering_threshold_, steering_angle);
