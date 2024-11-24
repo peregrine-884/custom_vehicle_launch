@@ -20,7 +20,7 @@ void WhillInterface::get_parameters() {
   this->declare_parameter("wheel_base", 0.0);
   wheel_base_ = this->get_parameter("wheel_base").as_double();
 
-this->declare_parameter("wheel_tread", 0.0);
+  this->declare_parameter("wheel_tread", 0.0);
   wheel_tread_ = this->get_parameter("wheel_tread").as_double();
 
   this->declare_parameter("motor_speed_factor", 0.0);
