@@ -94,7 +94,7 @@ void WhillController::autoware_callback(const Control::SharedPtr msg)
   }
 
   float normalized_speed = speed / max_speed_;
-  float normalized_angle = angle * 2.0;
+  float normalized_angle = angle * normalizer_;
 
   sensor_msgs::msg::Joy pub_msg;
   pub_msg.header.stamp = this->now();
