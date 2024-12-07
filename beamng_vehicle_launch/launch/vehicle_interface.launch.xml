@@ -2,9 +2,15 @@
 <launch>
   <arg name="vehicle_id" default="$(env VEHICLE_ID default)"/>
 
+  <arg name="topic_rate_config" default="$(find-pkg-share control_subscriber)/config/topic_rate_config.yaml"/>
+
   <group>
     <!-- <node name="control_cmd_node" pkg="control_subscriber" exec="control_cmd_node" output="screen">
     </node> -->
+
+    <node name="topic_rate_controller" pkg="control_subscriber" exec="topic_rate_controller" output="screen">
+      <param from="$(var topic_rate_config)"/>
+    </node>
   
     <node name="imu_orientation" pkg="control_subscriber" exec="imu_orientation" output="screen">
         <param name="yaw_degrees" value="0.0"/>

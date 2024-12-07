@@ -14,8 +14,8 @@ find_package(visualization_msgs REQUIRED)
 find_package(tf2 REQUIRED)
 find_package(tf2_geometry_msgs REQUIRED)
 
-add_executable(control_cmd_node src/control_cmd_node.cpp)
-ament_target_dependencies(control_cmd_node
+add_executable(topic_rate_controller src/topic_rate_controller.cpp)
+ament_target_dependencies(topic_rate_controller
   rclcpp
   autoware_control_msgs
 )
@@ -30,7 +30,7 @@ ament_target_dependencies(imu_orientation
 )
 
 install(TARGETS
-  control_cmd_node
+  topic_rate_controller
   imu_orientation
   DESTINATION lib/${PROJECT_NAME})
 
