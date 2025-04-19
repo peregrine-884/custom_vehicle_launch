@@ -9,6 +9,6 @@
 
 # ************************************************************************************
 # nebula_node_container.launch.pyで使用される
-# whillにミラーはないのですべて0に設定する
+# canedudev_roverにミラーはないのですべて0に設定する
 # https://autowarefoundation.github.io/autoware-documentation/main/how-to-guides/integrating-autoware/creating-vehicle-and-sensor-model/creating-vehicle-model/#mirrorparamyaml
 # ************************************************************************************

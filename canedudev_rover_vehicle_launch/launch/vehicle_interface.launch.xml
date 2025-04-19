@@ -3,13 +3,13 @@
   <arg name="vehicle_id" default="$(env VEHICLE_ID default)"/>
 
   <group>
-    <include file="$(find-pkg-share whill_bringup)/launch/whill_launch.py">
+    <include file="$(find-pkg-share canedudev_rover_bringup)/launch/canedudev_rover_launch.py">
       <arg>
     </include>
   </group>
 </launch>
 
 <!-- ========================================================================
-TODO: autowareの出力とwhillの入力を合わせる
+TODO: autowareの出力とcanedudev_roverの入力を合わせる
 autowareの出力を車両に流して、車両を動かすlaunchファイル
 ========================================================================= -->
